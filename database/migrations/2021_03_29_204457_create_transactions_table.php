@@ -14,7 +14,10 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('booking_id');
+            $table->string('status')->default('requested');      
+            // $table->foreign('booking_id', 'booking_id_fk_1197463')->references('id')->on('bookings')->onDelete('cascade');      
             $table->timestamps();
         });
     }

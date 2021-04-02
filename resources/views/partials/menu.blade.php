@@ -113,6 +113,46 @@
                     </li>
                 @endcan
 
+                @can('booking_management_access')
+                    <li class="nav-item has-treeview {{ request()->is('admin/bookings*') ? 'menu-open' : '' }} {{ request()->is('admin/transactions*') ? 'menu-open' : '' }} {{ request()->is('admin/trackings*') ? 'menu-open' : '' }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('cruds.bookingManagement.title') }}</span>
+                                <i class="right fa fa-fw fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('booking_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.bookings.index") }}" class="nav-link {{ request()->is('admin/services') || request()->is('admin/services/*') ? 'active' : '' }}">
+                                        <i class="fa-fw fas fa-wrench">
+
+                                        </i>
+                                        <p>
+                                            <span>{{ trans('cruds.booking.title') }}</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('transaction_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.transactions.index") }}" class="nav-link {{ request()->is('admin/documents') || request()->is('admin/documents/*') ? 'active' : '' }}">
+                                        <i class="fa-fw fas fa-file ">
+
+                                        </i>
+                                        <p>
+                                            <span>{{ trans('cruds.transaction.title') }}</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>

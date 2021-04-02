@@ -14,7 +14,11 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('service_id');
+            $table->decimal('cost', $precision = 8, $scale = 2);
+            $table->string('status')->default('requested');      
+            // $table->foreign('service_id', 'service_id_fk_1197463')->references('id')->on('services')->onDelete('cascade');      
             $table->timestamps();
         });
     }

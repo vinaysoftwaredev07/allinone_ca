@@ -38,4 +38,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Route::delete('docmaps/destroy', 'DocMapsController@massDestroy')->name('docmaps.massDestroy');
     // Route::resource('docmaps', 'DocMapsController');
 
+    // Bookings
+    Route::delete('bookings/destroy', 'BookingsController@massDestroy')->name('bookings.massDestroy');
+    Route::resource('bookings', 'BookingsController');
+
+    // Transaction
+    Route::delete('transactions/destroy', 'TransactionsController@massDestroy')->name('transactions.massDestroy');
+    Route::resource('transactions', 'TransactionsController');
+
 });
